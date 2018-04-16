@@ -511,6 +511,10 @@ topkg distrib
 topkg publish doc
 ```
 
+It's also worth noting that works are in progress to bring forth a centralized
+online documentation site (docs.ocaml.org, currently not available) for OCaml
+libraries, which will make browsing docs significantly easier.
+
 [ghpages]: https://pages.github.com/
 [ghpagesdocs]: https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/
 
