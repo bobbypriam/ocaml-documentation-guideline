@@ -37,9 +37,15 @@ good documentation for OCaml libraries.
 ## Background
 
 When we want to publish a library for the public to use, the presence of a
-documentation is really important. In fact, it can be the sole deciding
-factor of whether a potential user will end up choosing to use the library
-in their project.
+documentation is a must. In fact, it can be the sole deciding factor of
+whether a potential user will end up choosing to use the library in their
+project.
+
+As a small illustration, in an undocumented system, every user loses time
+understanding the system (lost time is [O(n)][bigo]). On the other hand,
+in a well-documented system, one person "lost" time documenting the system
+but it saves time for all the other users (lost time is O(1)). That is a
+rather good investment.
 
 However, what makes a good documentation? How good is "good enough"? These
 questions can be a rather confusing obstacle, particularly for the
@@ -47,10 +53,16 @@ less-experienced devs publishing their library for the first time and
 still unfamiliar with OCaml documentation tools. But it shouldn't be that
 way!
 
-Writing documentation should be fun, easy, and rewarding. With that as a
-goal, it is nice to have a guideline on how to write good, effective
-documentation in the OCaml ecosystem. This document aims to tackle that
-problem.
+Writing documentation should be fun, easy, and rewarding. It should not be
+an afterthought; instead, it should be included in the development phase,
+because as we write docs we can gain useful feedback on how good our
+library's design is from a user's perspective.
+
+These things considered, it would be nice to have a guideline on how to
+write good, effective documentation in the OCaml ecosystem. This document
+aims to tackle that problem.
+
+[bigo]: https://en.wikipedia.org/wiki/Big_O_notation
 
 ## Purpose
 
