@@ -36,27 +36,26 @@ good documentation for OCaml libraries.
 
 ## Background
 
-The OCaml ecosystem have historically been infamous of having sparse
-documentations. Many "docs" are just module signatures lumped together with
-one-sentence explanations, while lacking introductory elements and usage
-examples.
+When we want to publish a library for the public to use, the presence of a
+documentation is really important. In fact, it can be the sole deciding
+factor of whether a potential user will end up choosing to use the library
+in their project.
 
-While this may be beneficial to experienced OCaml developers (less noise to
-get to the "important parts"), it may prove harmful for beginners and
-less-experienced devs since it may not be clear to them how the pieces fit
-together. This may lead to issues being opened asking basic usage examples,
-which may take maintainers' time away from actually improving the library.
+However, what makes a good documentation? How good is "good enough"? These
+questions can be a rather confusing obstacle, particularly for the
+less-experienced devs publishing their library for the first time and
+still unfamiliar with OCaml documentation tools. But it shouldn't be that
+way!
 
-One probable reason for this problem is that the idea of a "good documentation"
-is too abstract.
-
-Hence, it is necessary to have a centralized document that formalizes the idea
-to avoid needless debates and bring forth productivity.
+Writing documentation should be fun, easy, and rewarding. With that as a
+goal, it is nice to have a guideline on how to write good, effective
+documentation in the OCaml ecosystem. This document aims to tackle that
+problem.
 
 ## Purpose
 
-The purpose of this guideline is to try to produce a decent standard that can be
-referred to by library authors to (ask contributors to) produce good docs.
+The purpose of this guideline is to provide a standard that can be referred
+to by library authors to (ask contributors to) produce good docs.
 
 This guideline is expected to evolve with the latest discovered practices,
 language features, tooling features, and feedback from community. This document
