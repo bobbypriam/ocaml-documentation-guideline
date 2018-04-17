@@ -150,10 +150,22 @@ writing library documentation.
 
 ### Write documentation in .mli files
 
-This item recommends putting documentation in `.mli` files. You can put
-documentation in `.ml` files, but as OCaml is a strict language where order
-of declarations are important, you will have less flexibility in organizing
-your doc comments. `.mli` files do not have that restriction.
+This item recommends putting documentation in `.mli` files.
+
+OCaml encourages people to separate the interface of a module from its
+implementation. Interface go to files with `.mli` extension, while
+implementation go to `.ml` files. Documentation is part of the interface
+of a module, hence it is logical to put it on `.mli`s, unburdened by
+implementation details.
+
+This approach also has the benefit of organizability: as OCaml is a strict
+language where order of declarations are important, putting docs in `.ml`
+files means you will have less flexibility in organizing your doc comments.
+`.mli` files do not have that restriction, and you may reorder at will.
+
+Note that this does _not_ mean you should not have comments on `.ml` files.
+Utilize comments on `.ml` files for implementation notes to help contributors.
+See the "Documentation <> Comments" section above.
 
 Example:
 
@@ -175,10 +187,6 @@ let add a b = a + b
 (** [add a b] returns the result of a + b *)
 val add : int -> int -> int
 ```
-
-Note that this does not mean you should not have comments on `.ml` files.
-Utilize comments on `.ml` files for implementation notes to help contributors.
-See the "Documentation <> Comments" section above.
 
 
 ### Write introductory documentation for the toplevel module
