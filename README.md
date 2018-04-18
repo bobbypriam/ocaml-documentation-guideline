@@ -21,6 +21,7 @@ good documentation for OCaml libraries.
     + [Write introductory documentation for the toplevel module](#write-introductory-documentation-for-the-toplevel-module)
     + [Organize signatures into logical sections](#organize-signatures-into-logical-sections)
     + [Document all your signatures](#document-all-your-signatures)
+    + [Put documentation comments after the signature elements](#put-documentation-comments-after-the-signature-elements)
     + [Write usage examples](#write-usage-examples)
     + [Properly document deprecations](#properly-document-deprecations)
     + [Have meaningful README](#have-meaningful-readme)
@@ -173,8 +174,8 @@ Example:
 (* ----- BAD ----- *)
 (* math.ml         *)
 
-(** [add a b] returns the result of a + b *)
 let add a b = a + b
+(** [add a b] returns the result of a + b *)
 
 
 (* ----- GOOD ----- *)
@@ -184,8 +185,8 @@ let add a b = a + b
 
 (* math.mli         *)
 
-(** [add a b] returns the result of a + b *)
 val add : int -> int -> int
+(** [add a b] returns the result of a + b *)
 ```
 
 
@@ -271,13 +272,13 @@ val compare : string -> string -> int
 
 (* ----- BETTER ----- *)
 
-(** Compares two strings *)
 val compare : string -> string -> int
+(** Compares two strings *)
 
 (* ----- GOOD ----- *)
 
-(** [compare x y] compares the strings [x] and [y] lexicographically. *)
 val compare : string -> string -> int
+(** [compare x y] compares the strings [x] and [y] lexicographically. *)
 ```
 
 The above example also shows that it is recommended to start a function
@@ -290,10 +291,69 @@ The Jane Street Style Guide also has a reasonable point for writing docs for
 trivial functions:
 
 > If you really can’t find anything useful to add with a comment, it’s
-> acceptable to have a comment that is redundant with the type and name,
-> particularly in broadly-aimed libraries like Base and Core.
+> acceptable to have a comment that is redundant with the type and name.
+
+The point is, we don't have to spend time to ask ourselves whether a
+signature item warrants a documentation string or not. Just do it, even
+if it feels entirely pointless and redundant it has to become a reflex.
+
+We might find the semantics of a signature item obvious based solely on
+its name, but that's just because _we_ implemented it. A reader not
+familliar with the implementation may not find it so obvious.
 
 [jststyle]: https://opensource.janestreet.com/standards/
+
+### Put documentation comments after signature elements
+
+This item recommends attaching documentation comments after the signature
+item they represent, as shown in the previous examples.
+
+OCaml supports putting documentation before or after signature elements.
+Note that this might be foreign to some users of other languages that are
+used to putting documentation _before_ the element they refer, but putting
+it after the element has several benefits:
+
+1. When you scan `.mli`s your eyes anchor on type, val, etc. keywords.
+   Once you spotted the one of interest, the documentation then follows
+   in the scanning direction, rather than having to switch directions.
+
+2. That's the way they end up being presented by documentation generators
+   (OCamldoc, odoc, explained later in this document), so there will be
+   less cognitive dissonance when you switch from one to the other. A
+   documentation generator output will then just be a prettified view of
+   your `.mli`.
+   
+An exception to this rule is for the first toplevel documentation and for
+inner-modules documentation. For the latter, documentation should go
+before the module declaration.
+
+This rule has the unfortunate caveat for variants: if you don't document
+every case of the variant, then at least the last case would require to
+have an empty comment block `(** *)` so that the following block will
+be attached correctly to the whole variant.
+
+Example (taken from [Alcotest] documentation):
+
+```ocaml
+type speed_level = [`Quick | `Slow]
+(** Speed level for a test. *)
+
+type 'a test_case = string * speed_level * ('a -> unit)
+(** A test case is an UTF-8 encoded documentation string, a speed
+    level and a function to execute. *)
+
+val test_case: string -> speed_level -> ('a -> unit) -> 'a test_case
+(** [test_case n s f] is the test case [n] running at speed [s] using
+    the function [f]. *)
+
+type 'a test = string * 'a test_case list
+(** A test is an US-ASCII encoded name and a list of test cases. *)
+
+exception Test_error
+(** The exception return by {!run} in case of errors. *)
+```
+
+[alcotest]: https://github.com/mirage/alcotest
 
 ### Write usage examples
 
@@ -546,4 +606,5 @@ Keep calm and write docs!
 
 # Changelog
 
--
+- [2018-04-18] Add the "Put documentation comments after signature elements" recommendation (credit to @dbuenzli)
+- [2018-04-17] Initial draft
