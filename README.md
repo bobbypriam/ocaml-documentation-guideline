@@ -21,7 +21,7 @@ good documentation for OCaml libraries.
     + [Write introductory documentation for the toplevel module](#write-introductory-documentation-for-the-toplevel-module)
     + [Organize signatures into logical sections](#organize-signatures-into-logical-sections)
     + [Document all your signatures](#document-all-your-signatures)
-    + [Put documentation comments after the signature elements](#put-documentation-comments-after-the-signature-elements)
+    + [Put documentation comments after signature elements](#put-documentation-comments-after-signature-elements)
     + [Write usage examples](#write-usage-examples)
     + [Properly document deprecations](#properly-document-deprecations)
     + [Have meaningful README](#have-meaningful-readme)
