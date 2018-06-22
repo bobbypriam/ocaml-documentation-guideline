@@ -4,7 +4,11 @@ OCaml Documentation Guideline
 This document aims to be the community-driven one-stop reference of how to write
 good documentation for OCaml libraries.
 
-> Document status: IN PROGRESS, WAITING FOR FEEDBACK
+> Document status: DEPRECATED, but still valid -- This guideline has been
+> [integrated to OCamlverse][ocamlverse] so please direct your contributions
+> there instead.
+
+[ocamlverse]: https://ocamlverse.github.io/content/documentation_guidelines.html
 
 ## Table of Contents
 
